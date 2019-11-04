@@ -1,0 +1,252 @@
+/*通用设置*/
+
+:root {
+	--body-bg-color: #222428;
+	--main-bg-color: #B02109;
+	--first-color: #e82c0c;
+}
+
+body {
+	background-color: var(--body-bg-color);
+	/*这么神奇的用法?第一次见*/
+}
+/*容器设置*/
+
+.container {
+	height: 20.85rem;
+	width: 40.9rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-end;
+	background-color: var(--main-bg-color);
+	border-bottom: 1rem solid var(--first-color);
+}
+/*人物样式设置*/
+
+.mj {
+	position: relative;
+	margin-left: 30rem;
+	height: 9.5rem;
+	top: 0.82rem;
+	animation: 4s move infinite;
+}
+/*head*/
+
+.head {
+	position: absolute;
+	margin-left: 0.1rem;
+	top: 0.3rem;
+	left: 1.5rem;
+	transform: rotate(50deg);
+	animation: 2s head-animation infinite;
+}
+
+.hat {
+	width: 1rem;
+	border-bottom: 0.5rem solid #000;
+	border-left: 0.15rem solid transparent;
+	border-right: 0.15rem solid transparent;
+	box-shadow: 0 0.1rem 0 #fff;
+}
+
+.hat-brim {
+	height: 0.25rem;
+	width: 2.5rem;
+	margin-top: 0.1rem;
+	background-color: #000;
+}
+
+.face {
+	position: relative;
+	width: 0.75rem;
+	height: 0.35rem;
+	transform: skew(45deg);
+	background-color: #fff;
+	margin-left: 0.45rem;
+}
+/*body*/
+
+.body {
+	position: relative;
+	z-index: 2;
+	width: 1.5rem;
+	border-bottom: 1.25rem solid #000;
+	border-left: 1.5rem solid transparent;
+	border-right: 1.5rem solid transparent;
+	border-bottom-left-radius: 1rem;
+	transform: rotate(90deg);
+	margin: 2.06rem 0.9rem 0 0;
+}
+/*arm*/
+
+.arm {
+	position: relative;
+	z-index: 3;
+	width: 1.6rem;
+	height: 1.7rem;
+	border: 0.45rem solid #000;
+	border-right: none;
+	border-bottom: none;
+	transform: rotate(-80deg);
+	margin-left: 1.3rem;
+	margin-top: -1.5rem;
+	border-radius: 0.25rem;
+	animation: 2s arm-animation infinite;
+}
+/*legs*/
+
+.legs {
+	position: relative;
+	left: -0.35rem;
+}
+
+.leg {
+	width: 0.75rem;
+	height: 2.5rem;
+	border-radius: 0.6rem;
+	background-color: #000;
+}
+
+.legs-left {
+	position: relative;
+	z-index: 1;
+	/*margin-left: -0.1rem;*/
+}
+
+.legs-left .upper-left {
+	background-color: #0e0e0e;
+	transform: rotate(20deg);
+	animation: 2s up-left-leg-animation infinite;
+}
+
+.legs-left .lower-left {
+	background-color: #0e0e0e;
+	transform: rotate(20deg);
+	margin-left: -0.75rem;
+	margin-top: -0.45rem;
+	animation: 2s low-left-leg-animation infinite;
+}
+
+.legs-right {
+	position: relative;
+	z-index: 4;
+	margin-left: 0.1rem;
+}
+
+.legs-right .upper-right {
+	transform: rotate(-45deg);
+	margin-left: -0.2rem;
+	animation: 2s up-right-leg-animation infinite;
+}
+
+.legs-right .lower-right {
+	transform: rotate(30deg);
+	margin-left: 0.2rem;
+	margin-top: -0.6rem;
+	animation: 2s low-right-leg-animation infinite;
+}
+/*feet*/
+
+.feet {
+	position: relative;
+}
+
+.foot {
+	width: 1.1rem;
+	height: 0.5rem;
+	background-color: #000;
+	border-top-left-radius: 0.5rem;
+	border-top-right-radius: 0.5rem;
+}
+
+.foot-left {
+	z-index: 1;
+	background-color: #0e0e0e;
+	margin-left: -3.85rem;
+	margin-top: -0.4rem;
+	animation: 2s left-foot-animation infinite;
+}
+
+.foot-right {
+	position: absolute;
+	z-index: 4;
+	transform: rotate(90deg);
+	left: 1.6rem;
+	top: -0.4rem;
+	animation: 2s right-foot-animation infinite;
+}
+/*动画*/
+
+@keyframes move {
+	0% {
+		margin-left: 20rem;
+	}
+	25% {
+		margin-left: 10rem;
+	}
+	50% {
+		margin-left: 0rem;
+	}
+	75% {
+		margin-left: -10rem;
+	}
+	100% {
+		margin-left: -20rem;
+	}
+}
+
+@keyframes head-animation {
+	50% {
+		margin-left: -0.1rem;
+	}
+}
+
+@keyframes arm-animation {
+	50% {
+		transform: rotate(-30deg);
+	}
+}
+
+@keyframes up-right-leg-animation {
+	50% {
+		transform: rotate(20deg);
+		margin-left: -1.9rem;
+		margin-top: -0.1rem;
+	}
+}
+
+@keyframes up-left-leg-animation {
+	50% {
+		transform: rotate(-45deg);
+		margin-left: 0.9rem;
+	}
+}
+
+@keyframes low-right-leg-animation {
+	50% {
+		transform: rotate(20deg);
+		margin-left: -2.65rem;
+	}
+}
+@keyframes low-left-leg-animation {
+	50% {
+		transform: rotate(30deg);
+		margin-left: 0.8rem;
+		margin-top: -1rem;
+	}
+}
+@keyframes left-foot-animation {
+	50% {
+		transform: rotate(90deg);
+		margin-left: -1.3rem;
+	}
+}
+
+@keyframes right-foot-animation {
+	50% {
+		transform: rotate(0deg);
+		left: 0.2rem;
+		top: -0.2rem;
+	}
+}

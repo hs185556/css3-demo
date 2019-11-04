@@ -1,0 +1,49 @@
+@charset "utf-8";
+.container{
+	width: 152px;
+	margin: 100px auto;
+	/*transform: perspective(1000px);*//*每张图片都有一个中心，不是我们想要的*/
+	perspective: 1000px;/*公用一个中心点，是我们想要的*/
+	opacity: 0.8;
+	filter:alpha(opacity=80);
+}
+.container .case1{
+	width: 150px;
+	height: 300px;
+	position: relative;
+	transform-style: preserve-3d;
+}
+.container .case1 img{
+	position: absolute;
+	width: 100%;
+	border: 1px solid #ccc;
+	cursor: pointer;
+	transition: all 1s ease-in-out;
+}
+/*.container .case1 img:nth-child(1){
+	transform: rotateY(0deg) translateZ(226px);
+}
+.container .case1 img:nth-child(2){
+	transform: rotateY(40deg) translateZ(226px);
+}
+.container .case1 img:nth-child(3){
+	transform: rotateY(80deg) translateZ(226px);
+}
+.container .case1 img:nth-child(4){
+	transform: rotateY(120deg) translateZ(226px);
+}
+.container .case1 img:nth-child(5){
+	transform: rotateY(160deg) translateZ(226px);
+}
+.container .case1 img:nth-child(6){
+	transform: rotateY(200deg) translateZ(226px);
+}
+.container .case1 img:nth-child(7){
+	transform: rotateY(240deg) translateZ(226px);
+}
+.container .case1 img:nth-child(8){
+	transform: rotateY(280deg) translateZ(226px);
+}
+.container .case1 img:nth-child(9){
+	transform: rotateY(320deg) translateZ(226px);
+}*/

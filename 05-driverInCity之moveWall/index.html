@@ -1,0 +1,88 @@
+<!--
+	这个只模拟出一块墙，如果有余力的话，再把夜幕模仿出来
+-->
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="login.css" />
+		<style type="text/css">
+			/*让body宽高铺满整个屏幕*/
+			body{
+				width: 100vw;
+				height: 100vh;
+				background-color: #2c2334;
+			}
+			/*这个视距让我设置为1的时候东西很远,设置大了之后东西就近了，越大是把东西拉得越近吗奇怪和另一个实验结论相悖呀*/
+			.wrap{
+				width: 20rem;
+				height: 10rem;
+				perspective: 1rem;
+			}
+			/*由于这个下面有3D物体,所以要设置transform-style: preserve-3d,下面同理*/
+			.wrap .cube{
+				width: 100%;
+				height: 200%;
+				transform-style: preserve-3d;
+			}
+			/*
+			 * 首先做一个宽50px，高800px的盒子
+			 * 让它从左往右运动，从X轴-1000%到X轴200%
+			 * 然后在让它沿Y轴逆时针旋转90deg,因为只能有一个transform生效，所以要把所有运动写在一个transform里面
+			 * 但是切记，要先逆时针旋转90deg，然后再做X轴移动事件，不然X轴的方向不会跟着旋转
+			 * 给子元素加上3d效果
+			 * 另外这个旋转了，子元素也跟着旋转了，但是X，Y，Z轴没有跟着旋转
+			 * 那么就是除了用transform写在一起的，且旋转写在前面的，XyZ轴才会跟着旋转
+			 */
+			.wrap .cube .face.building{
+				margin-left: -30rem;
+				position: absolute;
+				width: 2.5rem;
+				height: 40rem;
+				background: #835768;
+				bottom: 0;
+				transform: rotateY(-90deg) translateZ(1.25rem) ;
+				animation: 6s lt-rt ease-in-out infinite;
+				transform-style: preserve-3d;
+			}
+			/*
+			 * 在父元素没有逆时针旋转90deg的时候，这个content是和父元素水平铺在一起的
+			 * 设置这个before的轴心在右边
+			 * 然后顺时针旋转90deg，就和父元素成直角，且在父元素右边
+			 * 然后和父元素一起逆时针旋转90deg，before这个面就面向屏幕了
+			 * 由于before这个面比父元素宽，所以要往回移
+			 * 但是XYZ轴并未随之变化，所以是Z轴方向往回移
+			 */
+			.wrap .cube .face.building:before{
+				position: absolute;
+				content: '';
+				width: 15rem;
+				height: 100%;
+				transform: rotateY(90deg) translateZ(-12.5rem);
+				background: #8a5967;
+				transform-origin: 100% 50%;
+			}
+
+						
+			@keyframes lt-rt{
+				0%{
+					transform: rotateY(-90deg) translateX(-1000%) translateZ(1.25rem) ;
+				}
+				100%{
+					transform: rotateY(-90deg) translateX(200%) translateZ(1.25rem) ;
+				}
+			}
+		</style>
+	</head>
+
+	<body class="frc">
+		<div class="wrap">
+			<div class="cube">
+				<div class="face building"></div>
+			</div>
+		</div>
+	</body>
+
+</html>

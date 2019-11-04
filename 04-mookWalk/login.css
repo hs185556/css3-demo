@@ -1,0 +1,98 @@
+/*字体设置*/
+html,body{
+	width: 100%;
+	height: 100%;
+}
+html{
+	font: 20px/1 宋体, Arial, Helvetica, sans-serif;
+}
+body{
+	font-size: 0.7rem;/*字体14px*/
+}
+
+/*边距设置*/
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td {
+	margin: 0;
+	padding: 0
+}
+
+/*列表设置*/
+ul{
+	list-style: none;
+	margin-left: 0;
+}
+
+/*媒体查询*/
+@media screen and (min-width:0px) {
+	html {
+		font-size: 2px!important;
+	}
+}
+@media screen and (min-width:320px) {
+	html {
+		font-size: 5px!important;
+	}
+}
+
+@media screen and (min-width:480px) {
+	html {
+		font-size: 10px!important;
+	}
+}
+
+@media screen and (min-width:768px) {
+	html {
+		font-size: 14px!important;
+	}
+}
+
+@media screen and (min-width:960px) {
+	html {
+		font-size: 16px!important;
+	}
+}
+
+@media screen and (min-width:1200px) {
+	html {
+		font-size: 18px!important;
+	}
+}
+
+@media screen and (min-width:1330px) {
+	html {
+		font-size: 20px!important;
+	}
+}
+
+@media screen and (min-width:1890px) {
+	html {
+		font-size: 24px!important;
+	}
+}
+
+/*可复用类名*/
+/*清除浮动设置*/
+.clearfix {
+	zoom: 1
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	font-size: 0;
+	clear: both;
+	visibility: hidden
+}
+/*水平排列居中对齐和垂直排列居中对齐*/
+.frc{
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+.fcc{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}

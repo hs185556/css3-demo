@@ -1,0 +1,143 @@
+﻿<!--
+ copy from rzp
+ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .inner_c span{
+            display:block;
+            height: 3px;
+            background: #000;
+        }
+
+        /*版心*/
+        .inner_c{
+            margin: 20px auto;
+            position:relative;
+            width:600px;
+            height: 600px;
+            background: #CCC;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+       		transition: all 1.5s ease-in-out;
+        }
+		
+		.inner_c .line{
+       		transition: all 1.5s ease-out;
+       		width: 0;
+		}
+        .inner_c .line1{
+            position:absolute;
+            left: 0;
+            top:0;
+            transform-origin: left top;
+            transform: rotate(15deg);
+        }
+        .inner_c .line2{
+            position:absolute;
+            right: 0;
+            top: 0;
+            transform-origin: right top;
+            transform: rotate(-75deg);
+        }
+        .inner_c .line3{
+            position:absolute;
+            left: 0;
+            bottom:0;
+            transform-origin: left bottom;
+            transform: rotate(-75deg);
+        }
+        .inner_c .line4{
+            position:absolute;
+            right: 0;
+            bottom:0;
+            transform-origin: right bottom;
+            transform: rotate(15deg);
+        }
+        .inner_c .imgList{
+        	width: 423px;
+        	height: 418px;
+        	transform: rotate(15deg);
+        }
+       .inner_c .imgList img{
+       		display: none;
+       		width: 100%;
+       		height: 100%;
+       		transition: all 1.5s ease-in-out;
+       }
+    </style>
+
+</head>
+<body>
+<div class="inner_c" id="inner_c">
+    <span class="line1 line" id="line1"></span>
+    <span class="line2 line" id="line2"></span>
+    <span class="line3 line" id="line3"></span>
+    <span class="line4 line" id="line4"></span>
+    <div class="imgList">
+    	<img alt="" />
+    </div>
+</div>
+</body>
+<script>
+        window.onload=function () {
+            var oDiv = document.getElementById('inner_c');
+            var aSpan =oDiv.getElementsByTagName('span');
+            var oImg = document.querySelector('.imgList img');
+            
+            //lines
+            var timer = null;
+            var once = 1;
+            var delay = 1500;
+            clearInterval(timer);
+            lineMove();
+            timer = setInterval(lineMove,delay*3);//blank 1.5s
+			function lineMove(){
+                for(var i=0;i<aSpan.length;i++){
+					aSpan[i].style.width = "578px";//1.5s
+					setTimeout(function(){
+                	if(once == 1){
+                		oImg.style.display = "block";
+                		oImg.src = "images/风景1.jpg";
+                	}
+         			for(var i=0;i<aSpan.length;i++){
+	                    aSpan[i].style.width = "0px";//1.5s
+	                }
+         			if(once == 1){
+         				once = null;
+         				slideshow();
+         			}
+                },delay);
+                }
+            }
+			
+			//img
+			function slideshow(){
+				var timer = null;
+				var imgIndex = 1;
+				setTimeout(move,delay);
+				clearInterval(timer);
+				timer = setInterval(function(){
+					setTimeout(move,delay);
+				},delay*3);//blank 1.5s
+				function move(){
+					imgIndex++;
+					if(imgIndex == 7)imgIndex=1;
+					oImg.style.transform = "rotateY(90deg)";//1.5s
+					setTimeout(function(){
+						oImg.src =  "images/风景" + imgIndex + ".jpg";					
+						oImg.style.transform = "rotateY(0deg)";//1.5s
+					},delay);
+				}
+			}
+        }
+</script>
+</html>
